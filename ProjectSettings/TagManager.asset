@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tower
   - Enemy
+  - Shot
   layers:
   - Default
   - TransparentFX
@@ -13,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Targeting
-  - 
-  - 
+  - Tower
+  - Enemy
+  - Shot
   - 
   - 
   - 

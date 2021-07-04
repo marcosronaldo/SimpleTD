@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -9,6 +7,6 @@ public class Tile : MonoBehaviour
     public Tower tower;
     public bool spawn;
     public bool goal;
-    
-    public bool IsEmpty => tower==null && !goal && !spawn;
+
+    public bool IsEmpty => tower == null && !goal && !spawn;
 }

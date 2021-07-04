@@ -4,44 +4,46 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField]
-    private CinemachineVirtualCamera targetGroupCamera;
-    [SerializeField]
-    private CinemachineTargetGroup targetGroup;
-    [SerializeField]
-    private CinemachineVirtualCamera mapCamera;
-    [SerializeField]
-    private CinemachineVirtualCamera topCamera;
-
-    public Camera mainCamera => Camera.main;
-
-    public void ClearTargetGroupCamera()
-    {
-        foreach (var t in targetGroup.m_Targets)
-        {
-            targetGroup.RemoveMember(t.target);    
-        }
-    }
-
-    public static CameraManager Instance;
-    
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public enum Focus
     {
         Map,
         Top,
-        TargetGroup,
+        TargetGroup
+    }
+
+    public static CameraManager Instance;
+
+    [SerializeField] private CinemachineVirtualCamera targetGroupCamera;
+
+    [SerializeField] private CinemachineTargetGroup targetGroup;
+
+    [SerializeField] private CinemachineVirtualCamera mapCamera;
+
+    [SerializeField] private CinemachineVirtualCamera topCamera;
+
+    public Camera mainCamera => Camera.main;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
+    public void ClearTargetGroupCamera()
+    {
+        foreach (var t in targetGroup.m_Targets) targetGroup.RemoveMember(t.target);
+    }
+
+    public void AddTarget(Transform t)
+    {
+        targetGroup.AddMember(t, 1, 1);
+    }
+
+    public void RemoveTarget(Transform t)
+    {
+        targetGroup.RemoveMember(t);
     }
 
     public void ChangeCamera(Focus focus)

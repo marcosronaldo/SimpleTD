@@ -9,9 +9,8 @@ public class Map
     public int sizeZ;
     public Vector3 goal;
     public Vector3 spawn;
-        
-    [SerializeField]
-    public List<Tile> tiles;
+
+    [SerializeField] public List<Tile> tiles;
 
     public Map(int sizeX, int sizeZ)
     {
@@ -24,7 +23,7 @@ public class Map
     {
         return tiles[CoordinatesToIndex(x, z)];
     }
-    
+
     public int CoordinatesToIndex(int x, int z)
     {
         return x * sizeZ + z;
